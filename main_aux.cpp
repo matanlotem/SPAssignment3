@@ -207,7 +207,6 @@ int queryAndCheck(SPPoint ***histDB, SPPoint ***siftDB, int *nFeatures, int k,
 		free(query);
 		return -1;
 	}
-	for (int i=0; i<numOfImages; i++) dists[i].index = i; // set indices
 
 	// compare global descriptors
 	// get histogram
@@ -218,8 +217,10 @@ int queryAndCheck(SPPoint ***histDB, SPPoint ***siftDB, int *nFeatures, int k,
 		return -1;
 	}
 	// compare histograms, sort and print output
-	for (int i=0; i<numOfImages; i++)
+	for (int i=0; i<numOfImages; i++) {
 		dists[i].value = spRGBHistL2Distance(qhist, histDB[i]);
+		dists[i].index = i;
+	}
 	sortAndPrint(dists, numOfImages, k, 1, OUTPUT_GLOBAL_MSG);
 	destroySPPoint1D(qhist, 3); // cleanup
 

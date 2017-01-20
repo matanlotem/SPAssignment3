@@ -45,7 +45,7 @@ int main() {
 	for (int i=0; i<numOfImages; i++)
 		printf("%d\t%.0f\n",i,dists[i]);
 
-	/*
+
 	im2 = spGetRGBHist("../images/img9.png",1,nBins);
 	for (int i=0; i<3; i++) {
 		for (int j=0; j<nBins; j++) {
