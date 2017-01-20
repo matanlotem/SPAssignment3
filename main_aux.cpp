@@ -151,16 +151,17 @@ typedef struct sortable_index {
 } sortable_index;
 
 // comparator for sortAndPrint
-int compareIndex(const void *A, const void *B) {
+int compareIndex(const void *a, const void *b) {
 	// sortable_index comparator
 	// compares by value and uses index as tie breaker
-	const sortable_index *a = (sortable_index *)A;
-	const sortable_index *b = (sortable_index *)B;
-	if (a->value > b->value || (a->value == b->value && a->index > b->index)) return 1;
+	if (((sortable_index*)a)->value > ((sortable_index*)b)->value ||
+			(((sortable_index*)a)->value == ((sortable_index*)b)->value &&
+					((sortable_index*)a)->index > ((sortable_index*)b)->index))
+		return 1;
 	return -1;
 }
 
-void sortAndPrint(sortable_index *arr, int dim, int k, int order, char *msg) {
+void sortAndPrint(sortable_index *arr, int dim, int k, int order, const char *msg) {
 	// sorts an array by value and prints k first indices
 	// prints msg and then indices
 	// if order = -1, flips sorting order
