@@ -1,17 +1,3 @@
-/*
- * main_aux.cpp
- *
- *  Created on: Jan 19, 2017
- *      Author: Matan
- */
-
-/*
- * main_aux.cpp
- *
- *  Created on: Jan 19, 2017
- *      Author: Matan
- */
-
 #include "sp_image_proc_util.h"
 #include "main_aux.h"
 #include <cstdio>
@@ -79,6 +65,7 @@ int getUserParams(char *dir, char *prefix, char *suffix,
 		int *numOfImages, int *numOfBins, int *nFeaturesToExtract) {
 	// returns 0 if successful
 	// otherwise -1
+
 	if (dir == NULL || prefix == NULL || suffix == NULL ||
 			numOfImages == NULL || numOfBins == NULL || nFeaturesToExtract == NULL)
 		return -1;
@@ -107,10 +94,11 @@ int getUserParams(char *dir, char *prefix, char *suffix,
 int preprocessing(SPPoint ***histDB, SPPoint ***siftDB, int *nFeatures,
 		char *dir, char *prefix, char *suffix,
 		int numOfImages, int numOfBins, int nFeaturesToExtract) {
-	// compute histogram and sift descriptors for all images
+	// compute histogram and sift features for all images
 	// if fails returns -1, otherwise 0
 
-	if (histDB == NULL || siftDB == NULL || nFeatures == NULL)
+	if (histDB == NULL || siftDB == NULL || nFeatures == NULL ||
+			dir == NULL || prefix == NULL || suffix == NULL)
 		return -1;
 
 	// allocate memory for image name string
@@ -120,10 +108,10 @@ int preprocessing(SPPoint ***histDB, SPPoint ***siftDB, int *nFeatures,
 		return -1;
 	}
 
-	// compute histogram and sift descriptors
+	// compute histogram and sift features
 	for (int i=0; i<numOfImages; i++) {
 		sprintf(imageName,"%s%s%d%s", dir, prefix, i, suffix);
-		printf("%s\n",imageName); // remove this ###
+		//printf("%s\n",imageName); // remove this ###
 
 		// get histogram
 		histDB[i] = spGetRGBHist(imageName,i,numOfBins);
@@ -132,7 +120,7 @@ int preprocessing(SPPoint ***histDB, SPPoint ***siftDB, int *nFeatures,
 			return -1;
 		}
 
-		// get sift descriptors
+		// get sift features
 		siftDB[i] = spGetSiftDescriptors(imageName,i,nFeaturesToExtract, nFeatures + i);
 		if (siftDB[i] == NULL) {
 			free(imageName);
@@ -180,10 +168,10 @@ void sortAndPrint(sortable_index *arr, int dim, int k, int order, const char *ms
 int queryAndCheck(SPPoint ***histDB, SPPoint ***siftDB, int *nFeatures, int k,
 		int numOfImages, int numOfBins, int nFeaturesToExtract) {
 	/**
-	 * query user for image (or # for exit)
-	 * compare image to preprocessed desctiptors and print k closest image indices
-	 * compare once for global descriptors (histogram)
-	 * and once for local descriptors (sift features)
+	 * Queries user for action - either image path or # exit character
+     * Computes histogram and sift features for query image
+     * Compares query image to pre-processed descriptors and prints k closest image indices
+     * once for global descriptors (histogram) and once for local descriptors (sift features)
 	 */
 
 	// allocate memory for query string
@@ -198,7 +186,7 @@ int queryAndCheck(SPPoint ***histDB, SPPoint ***siftDB, int *nFeatures, int k,
 	if (strncmp(query, EXIT_CHAR, 1024) == 0) {
 		free(query);
 		printf("%s", EXIT_MSG);
-		return -1;
+		return 1;
 	}
 
 	// allocate distance array for comparisons
@@ -253,8 +241,6 @@ int queryAndCheck(SPPoint ***histDB, SPPoint ***siftDB, int *nFeatures, int k,
 
 		// sum hits
 		for (int j=0; j<k; j++) dists[hits[j]].value ++;
-		//for (int j=0; j<k; j++)
-			//dists[spPointGetIndex(siftDB[hits[j]][0])].value ++;
 		free(hits);
 	}
 
@@ -270,8 +256,8 @@ int queryAndCheck(SPPoint ***histDB, SPPoint ***siftDB, int *nFeatures, int k,
 
 void destroySPPoint1D(SPPoint **DB, int dim) {
 	/**
-	 * destroy a 1D SPPoint array of size dim
-	 * assumes dim is correct
+	 * Frees memory of a 1D SPPoint array of size dim
+	 * Assumes dim is the correct dimension of the array
 	 */
 	if (DB != NULL) {
 		for (int i=0; i<dim; i++)
@@ -282,12 +268,10 @@ void destroySPPoint1D(SPPoint **DB, int dim) {
 
 void destroySPPoint2D(SPPoint ***DB, int dim, int *nChannels) {
 	/**
-	 * destroy a 2D SPPoint array
-	 * the first dimension is dim
-	 * the second dimension is given in nChannels
-	 * if nChannels is NULL then the second dimension is 3
-	 * assumes dimensions to be correct
-	 * destroys nChannels as well
+	 * Frees memory of a 2D SPPoint array (a 1D array of size dim of 1D SPPoint arrays)
+	 * The dimension of array DB[i] is nChannels[i] or by default 3 if nChannels is NULL
+	 * Assumes given array dimensions are correct
+	 * Frees nChannels as well
 	 */
 
 	if (DB != NULL) {

@@ -1,10 +1,3 @@
-/*
- * sp_image_proc_util.cpp
- *
- *  Created on: Jan 18, 2017
- *      Author: Matan
- */
-
 #include "sp_image_proc_util.h"
 #include <opencv2/imgproc.hpp>//calcHist
 #include <opencv2/core.hpp>//Mat

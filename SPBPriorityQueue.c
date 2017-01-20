@@ -1,10 +1,3 @@
-/*
- * SPBPriorityQueue.c
- *
- *  Created on: Dec 10, 2016
- *      Author: Matan
- */
-
 #include <malloc.h>
 #include <assert.h>
 #include "SPBPriorityQueue.h"
