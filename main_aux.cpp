@@ -53,6 +53,7 @@ int getUserInt(int *val, const char *msg, const char *err, int min_val, int max_
 	printf("%s",msg);
 	fgets(str, 1024, stdin);
 	*val = atoi(str);
+	free(str);
 	if (*val < min_val || *val > max_val) {
 		printf("%s",err);
 		return -1;
