@@ -1,11 +1,11 @@
-#include "sp_image_proc_util.h"
-#include "main_aux.h"
 #include <cstdio>
 #include <cstdlib>
+#include "sp_image_proc_util.h"
+#include "main_aux.h"
 
-#define MEMORY_ERROR "An error occurred - allocation failure\n"
-// number of closest imagess to find
+// number of closest images to find
 #define K 5
+
 
 int main () {
 	int ret;

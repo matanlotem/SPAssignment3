@@ -1,9 +1,11 @@
-#include "sp_image_proc_util.h"
 #include <opencv2/imgproc.hpp>//calcHist
 #include <opencv2/core.hpp>//Mat
 #include <opencv2/highgui.hpp>
 #include <opencv2/xfeatures2d.hpp>//SiftDescriptorExtractor
 #include <cstdlib>
+#include <cstdio>
+#include <vector>
+#include "sp_image_proc_util.h"
 extern "C" {
 	#include "SPBPriorityQueue.h"
 }
@@ -19,7 +21,7 @@ SPPoint* pointFromFloatMat(Mat mat, int i, int dir, int index) {
 	// returns NULL in case of allocation failure
 
 	int dim;
-	if (dir)
+	if (dir == 1)
 		dim = mat.cols;
 	else
 		dim = mat.rows;
@@ -74,7 +76,7 @@ SPPoint** spGetRGBHist(const char* str,int imageIndex, int nBins) {
 		calcHist(&bgr_planes[i], 1, 0, Mat(), channel_hist, 1, &nBins, &histRange);
 
 		// create spPoint, flip direction to get rgb instead of bgr
-		hist[2-i] = pointFromFloatMat(channel_hist, i, 0, imageIndex);
+		hist[2-i] = pointFromFloatMat(channel_hist, 0, 0, imageIndex);
 
 		// in case of allocation failure
 		if (hist[2-i] == NULL) {

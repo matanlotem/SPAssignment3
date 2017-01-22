@@ -1,0 +1,56 @@
+test1 - invalid number of images
+images/
+img
+0
+
+test2 - invalid number of bins
+images/
+img
+5
+.png
+-2
+
+test3 - invalid number of bins
+images/
+img
+5
+.png
+257
+
+test4 - invalid number of features
+images/
+img
+5
+.png
+16
+-3
+
+test5 - too many images
+images/
+img
+20
+.png
+16
+16
+
+test6 - invalid query image
+images/
+img
+5
+.png
+16
+16
+bla
+
+test7 - full test (from assignment)
+images/
+img
+17
+.png
+16
+100
+queryA.png
+queryB.png
+queryC.png
+queryD.png
+#

@@ -1,6 +1,23 @@
 #ifndef MAIN_AUX_H_
 #define MAIN_AUX_H_
 
+#define ENTER_IM_DIR_MSG "Enter images directory path:\n"
+#define ENTER_IM_PRE_MSG "Enter images prefix:\n"
+#define ENTER_IM_NUM_MSG "Enter number of images:\n"
+#define ERROR_IM_NUM_MSG "An error occurred - invalid number of images\n"
+#define ENTER_IM_SUF_MSG "Enter images suffix:\n"
+#define ENTER_NUM_BINS_MSG "Enter number of bins:\n"
+#define ERROR_NUM_BINS_MSG "An error occurred - invalid number of bins\n"
+#define ENTER_NUM_FEATURES_MSG "Enter number of features:\n"
+#define ERROR_NUM_FEATURES_MSG "An error occurred - invalid number of features\n"
+#define ENTER_QUERY_MSG "Enter a query image or # to terminate:\n"
+#define EXIT_MSG "Exiting...\n"
+#define EXIT_CHAR "#"
+#define OUTPUT_GLOBAL_MSG "Nearest images using global descriptors:\n"
+#define OUTPUT_LOCAL_MSG "Nearest images using local descriptors:\n"
+#define MEMORY_ERROR "An error occurred - allocation failure\n"
+
+
 /**
  * Get initial program parameters form user:
  * 	- Image naming convention - directory, prefix, suffix
