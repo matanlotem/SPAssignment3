@@ -1,0 +1,72 @@
+==22309== Memcheck, a memory error detector
+==22309== Copyright (C) 2002-2013, and GNU GPL'd, by Julian Seward et al.
+==22309== Using Valgrind-3.10.0.SVN and LibVEX; rerun with -h for copyright info
+==22309== Command: ex3
+==22309== Parent PID: 12655
+==22309== 
+==22309== 
+==22309== HEAP SUMMARY:
+==22309==     in use at exit: 9,900 bytes in 47 blocks
+==22309==   total heap usage: 93,377 allocs, 93,330 frees, 3,873,199,350 bytes allocated
+==22309== 
+==22309== 304 bytes in 1 blocks are possibly lost in loss record 22 of 29
+==22309==    at 0x4C2CC70: calloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==22309==    by 0x4012E54: _dl_allocate_tls (dl-tls.c:296)
+==22309==    by 0xE6A5DA0: pthread_create@@GLIBC_2.2.5 (allocatestack.c:589)
+==22309==    by 0xE8D2EF0: ??? (in /usr/lib/libtbb.so.2)
+==22309==    by 0xE8D9DA9: ??? (in /usr/lib/libtbb.so.2)
+==22309==    by 0x55E4D82: void tbb::interface6::internal::partition_type_base<tbb::interface6::internal::auto_partition_type>::execute<tbb::interface6::internal::start_for<tbb::blocked_range<int>, cv::CalcHist1D_8uInvoker, tbb::auto_partitioner const>, tbb::blocked_range<int> >(tbb::interface6::internal::start_for<tbb::blocked_range<int>, cv::CalcHist1D_8uInvoker, tbb::auto_partitioner const>&, tbb::blocked_range<int>&) (in /usr/local/stow/opencv-3.1.0/lib/opencv-3.1.0/lib/libopencv_imgproc.so.3.1.0)
+==22309==    by 0x55E5518: tbb::interface6::internal::start_for<tbb::blocked_range<int>, cv::CalcHist1D_8uInvoker, tbb::auto_partitioner const>::execute() (in /usr/local/stow/opencv-3.1.0/lib/opencv-3.1.0/lib/libopencv_imgproc.so.3.1.0)
+==22309==    by 0xE8DBB39: ??? (in /usr/lib/libtbb.so.2)
+==22309==    by 0xE8D9F8F: ??? (in /usr/lib/libtbb.so.2)
+==22309==    by 0x55DC1A8: cv::calcHist(cv::Mat const*, int, int const*, cv::_InputArray const&, cv::_OutputArray const&, int, int const*, float const**, bool, bool) (in /usr/local/stow/opencv-3.1.0/lib/opencv-3.1.0/lib/libopencv_imgproc.so.3.1.0)
+==22309==    by 0x4021B8: spGetRGBHist(char const*, int, int) (in /specific/a/home/cc/students/csguests/matanlotem/Study/SoftwareProject/SPAssignment3/ex3)
+==22309==    by 0x401798: preprocessing(sp_point_t***, sp_point_t***, int*, char*, char*, char*, int, int, int) (in /specific/a/home/cc/students/csguests/matanlotem/Study/SoftwareProject/SPAssignment3/ex3)
+==22309== 
+==22309== 304 bytes in 1 blocks are definitely lost in loss record 23 of 29
+==22309==    at 0x4C2CC70: calloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==22309==    by 0x4012E54: _dl_allocate_tls (dl-tls.c:296)
+==22309==    by 0xE6A5DA0: pthread_create@@GLIBC_2.2.5 (allocatestack.c:589)
+==22309==    by 0xE8D2EF0: ??? (in /usr/lib/libtbb.so.2)
+==22309==    by 0xE8D9DA9: ??? (in /usr/lib/libtbb.so.2)
+==22309==    by 0x55E4D82: void tbb::interface6::internal::partition_type_base<tbb::interface6::internal::auto_partition_type>::execute<tbb::interface6::internal::start_for<tbb::blocked_range<int>, cv::CalcHist1D_8uInvoker, tbb::auto_partitioner const>, tbb::blocked_range<int> >(tbb::interface6::internal::start_for<tbb::blocked_range<int>, cv::CalcHist1D_8uInvoker, tbb::auto_partitioner const>&, tbb::blocked_range<int>&) (in /usr/local/stow/opencv-3.1.0/lib/opencv-3.1.0/lib/libopencv_imgproc.so.3.1.0)
+==22309==    by 0x55E5518: tbb::interface6::internal::start_for<tbb::blocked_range<int>, cv::CalcHist1D_8uInvoker, tbb::auto_partitioner const>::execute() (in /usr/local/stow/opencv-3.1.0/lib/opencv-3.1.0/lib/libopencv_imgproc.so.3.1.0)
+==22309==    by 0xE8DBB39: ??? (in /usr/lib/libtbb.so.2)
+==22309==    by 0xE8D9F8F: ??? (in /usr/lib/libtbb.so.2)
+==22309==    by 0x55DC1A8: cv::calcHist(cv::Mat const*, int, int const*, cv::_InputArray const&, cv::_OutputArray const&, int, int const*, float const**, bool, bool) (in /usr/local/stow/opencv-3.1.0/lib/opencv-3.1.0/lib/libopencv_imgproc.so.3.1.0)
+==22309==    by 0x4021B8: spGetRGBHist(char const*, int, int) (in /specific/a/home/cc/students/csguests/matanlotem/Study/SoftwareProject/SPAssignment3/ex3)
+==22309==    by 0x401798: preprocessing(sp_point_t***, sp_point_t***, int*, char*, char*, char*, int, int, int) (in /specific/a/home/cc/students/csguests/matanlotem/Study/SoftwareProject/SPAssignment3/ex3)
+==22309== 
+==22309== 1,520 bytes in 5 blocks are possibly lost in loss record 28 of 29
+==22309==    at 0x4C2CC70: calloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==22309==    by 0x4012E54: _dl_allocate_tls (dl-tls.c:296)
+==22309==    by 0xE6A5DA0: pthread_create@@GLIBC_2.2.5 (allocatestack.c:589)
+==22309==    by 0xE8D2EF0: ??? (in /usr/lib/libtbb.so.2)
+==22309==    by 0xE8D3044: ??? (in /usr/lib/libtbb.so.2)
+==22309==    by 0xE8D32F8: ??? (in /usr/lib/libtbb.so.2)
+==22309==    by 0xE6A5181: start_thread (pthread_create.c:312)
+==22309==    by 0x84AD30C: clone (clone.S:111)
+==22309== 
+==22309== 3,096 bytes in 3 blocks are possibly lost in loss record 29 of 29
+==22309==    at 0x4C2B800: operator new[](unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==22309==    by 0xE8D823B: ??? (in /usr/lib/libtbb.so.2)
+==22309==    by 0xE8D85BD: ??? (in /usr/lib/libtbb.so.2)
+==22309==    by 0xE8D6B02: ??? (in /usr/lib/libtbb.so.2)
+==22309==    by 0xE8D6359: ??? (in /usr/lib/libtbb.so.2)
+==22309==    by 0xE8D4800: tbb::internal::allocate_root_with_context_proxy::allocate(unsigned long) const (in /usr/lib/libtbb.so.2)
+==22309==    by 0x55DC0E8: cv::calcHist(cv::Mat const*, int, int const*, cv::_InputArray const&, cv::_OutputArray const&, int, int const*, float const**, bool, bool) (in /usr/local/stow/opencv-3.1.0/lib/opencv-3.1.0/lib/libopencv_imgproc.so.3.1.0)
+==22309==    by 0x4021B8: spGetRGBHist(char const*, int, int) (in /specific/a/home/cc/students/csguests/matanlotem/Study/SoftwareProject/SPAssignment3/ex3)
+==22309==    by 0x401798: preprocessing(sp_point_t***, sp_point_t***, int*, char*, char*, char*, int, int, int) (in /specific/a/home/cc/students/csguests/matanlotem/Study/SoftwareProject/SPAssignment3/ex3)
+==22309==    by 0x401320: main (in /specific/a/home/cc/students/csguests/matanlotem/Study/SoftwareProject/SPAssignment3/ex3)
+==22309== 
+==22309== LEAK SUMMARY:
+==22309==    definitely lost: 304 bytes in 1 blocks
+==22309==    indirectly lost: 0 bytes in 0 blocks
+==22309==      possibly lost: 4,920 bytes in 9 blocks
+==22309==    still reachable: 4,676 bytes in 37 blocks
+==22309==         suppressed: 0 bytes in 0 blocks
+==22309== Reachable blocks (those to which a pointer was found) are not shown.
+==22309== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==22309== 
+==22309== For counts of detected and suppressed errors, rerun with: -v
+==22309== ERROR SUMMARY: 4 errors from 4 contexts (suppressed: 0 from 0)
